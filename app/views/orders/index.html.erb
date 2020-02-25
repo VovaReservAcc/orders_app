@@ -1,0 +1,11 @@
+<H1> This is orders index</H2>
+<H2>Add new</H2>
+<%= link_to "Add", new_order_path %>
+<% @all_orders.each do |ord|%>
+<h3><%= ord.number %></h3>
+<h3><%= ord.customer.name %></h3>
+<%= link_to "open", order_path(ord) %>
+<%= link_to "edit", edit_order_path(ord) %>
+<%end%>
+</p>
+<%= link_to "Back", root_path %>

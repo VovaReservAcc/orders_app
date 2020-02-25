@@ -1,0 +1,12 @@
+<H1> This is goods index</H2>
+<H2>Add new</H2>
+<%=@all_goods.inspect%>
+<%= link_to "Add", new_good_path %>
+<% @all_goods.each do |gd|%>
+<h3><%= gd.id %></h3>
+<h3><%= gd.name.to_s %></h3>
+<h3><%= gd.properties %></h3>
+<h3>test</h3>
+<%end%>
+</p>
+<%= link_to "Back", root_path %>
