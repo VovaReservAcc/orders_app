@@ -1,0 +1,5 @@
+<tr>
+<td><%= f.select :good ,options_for_select(@goods_collection_for_select, f.object.good&.id || 1) %></td> 
+<td><%= f.input :count, label: false %></td> 
+<td><%= f.input :price, label: false %></td> 
+</tr>    

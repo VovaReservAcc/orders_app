@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+    ActionView::Base.include(ApplicationHelper)
     def index
        @all_orders = Order.all
     end   
@@ -32,7 +33,7 @@ class OrdersController < ApplicationController
       end
     end
     end   
-
+    
     def good_params
       params.require(:order).permit(:customer_id, :number, :date, )
     end

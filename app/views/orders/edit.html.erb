@@ -1,4 +1,30 @@
 <H1> This is orders edit</H2>
-<%= render 'good_form', order: @order %>
-<%= render 'good_form_row', order: @order %>
+
+<%= simple_form_for @order do |f| %>
+  <%= f.input :number %>
+  <%= f.select :customer ,options_for_select(@customer_collection_for_select, f.object.customer.id) %>
+  </p>
+  
+  <table>
+ <tr>
+  <th></th>
+  <th>Good</th>
+  <th>Count</th>
+  <th>Price</th>
+  </tr>
+   <tbody class='fields'>
+  <%= f.fields_for :order_rows do |o_row| %>
+     <%= render 'order_row', f: o_row  %>
+  <% end %>
+  </tbody>
+  </table>
+ <%= f.button :submit %>
+ <%= link_to_add_row('Add row', f, :order_rows, class: 'btn btn-primary') %>
+<% end %>
+
+ 
+
+ 
+</p>
+
 <%= link_to "Back", orders_path %>
