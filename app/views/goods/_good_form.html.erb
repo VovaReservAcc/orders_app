@@ -1,6 +1,31 @@
-<%= simple_form_for @good do |f| %>
-  <%= f.input :name %>
-  <%= f.input :properties %>
-  <%= f.input :count_in_pack %>
-  <%= f.button :submit %>
+<div class='comtainer'>
+<div class='row'>
+
+<div class='col-sm-2'>
+
+<%= simple_form_for @good,  :html => { class: "form-horizontal", role: "form" } do |f| %>
+ <div class="form-group">
+  <label for="nm">Goods Name(title)</label>
+  <%= f.input :name , label: false, id: "nm" %>
+  </div>  
+  <div class="form-group">
+   <label for="prop">Properties</label>
+
+  <%= f.input :properties, label: false, id: "prop" %>
+  </div>  
+  <div class="form-group">
+   <label for="count">Count in pack</label>
+
+  <%= f.input :count_in_pack, label: false, id: "count" %>
+  </div>  
+ 
+  <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
+
+<%= link_to "Back", root_path, class: "btn btn-secondary" %>
+
+</div>
+
+</div>
+
+</div>

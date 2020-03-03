@@ -1,11 +1,36 @@
 <H1> This is orders index</H2>
-<H2>Add new</H2>
-<%= link_to "Add", new_order_path %>
-<% @all_orders.each do |ord|%>
-<h3><%= ord.number %></h3>
-<h3><%= ord.customer.name %></h3>
-<%= link_to "open", order_path(ord) %>
-<%= link_to "edit", edit_order_path(ord) %>
-<%end%>
-</p>
-<%= link_to "Back", root_path %>
+
+ <table class="table">
+ <thead class="thead-dark">
+  <tr>
+  <th>Number</th>
+  <th>Customer</th>
+  <th>Date</th>
+  <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <% @all_orders.each do |ord|%>
+  <td><%= ord.number %></td>
+  <td><%= ord.customer.name %></td>
+  <td><%= ord.date %></td>
+  <td>
+    <%= link_to "open", order_path(ord), class: "btn btn-success" %>
+    <%= link_to "edit", edit_order_path(ord),  class: "btn btn-danger" %>
+  </td>
+
+  <%end%>
+  </tr>
+  </tbody>
+  </table>  
+<div class = "container">
+ <div class = "row">  
+   <div class = "col-sm-6">    
+      <%= link_to "Add new order", new_order_path,  class: "btn btn-lg btn-primary" %>
+   </div>
+  <div class = "col-sm-6">    
+     <%= link_to "Back to the root path", root_path,  class: "btn btn-lg btn-primary" %>   
+  </div>
+ </div>
+</div>

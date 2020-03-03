@@ -2,4 +2,8 @@
 <td><%= f.select :good ,options_for_select(@goods_collection_for_select, f.object.good&.id || 1) %></td> 
 <td><%= f.input :count, label: false %></td> 
 <td><%= f.input :price, label: false %></td> 
+<td>
+    <%= f.input_field :_destroy, as: :hidden %>
+    <%= link_to 'Delete', '#', class: 'remove_record' %>
+ </td>
 </tr>    
