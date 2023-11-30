@@ -1,9 +1,9 @@
 <div class='comtainer'>
 <div class='row'>
 
-<div class='col-sm-2'>
+<div class='col-sm-6'>
 
-<%= simple_form_for @good,  :html => { class: "form-horizontal", role: "form" } do |f| %>
+<%= simple_form_for current_good,  :html => { class: "form-horizontal", role: "form" } do |f| %>
  <div class="form-group">
   <label for="nm">Goods Name(title)</label>
   <%= f.input :name , label: false, id: "nm" %>
@@ -17,15 +17,21 @@
    <label for="count">Count in pack</label>
 
   <%= f.input :count_in_pack, label: false, id: "count" %>
-  </div>  
- 
-  <%= f.button :submit, class: "btn btn-primary" %>
+  </div> 
+  <div class="form-group">
+ <div class= "flex-container">
+  <div>
+     <%= f.button :submit, class: "btn btn-primary btn-app" %>
+     <%= link_to "Back", goods_path, class: "btn btn-warning btn-app" %>
+  </div>
+ </div>
+  </div>
 <% end %>
 
-<%= link_to "Back", root_path, class: "btn btn-secondary" %>
 
 </div>
 
 </div>
 
 </div>
+

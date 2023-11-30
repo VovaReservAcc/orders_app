@@ -123,3 +123,7 @@ float: left;
 margin-left: 15px;
 
 }
+
+.app-btn {
+  width: 150px; /* Adjust the width as needed */
+}

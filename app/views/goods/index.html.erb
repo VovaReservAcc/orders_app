@@ -1,33 +1,43 @@
-<H1> This is goods index</H2>
-<H2>Add new</H2>
-<div class= "container">
-<div class= "row">  
-<div class= "col-sm-1">    
+<div class="card" style="width: 100rem;" >
+  <div class="card-header">
+    <h1>Nomenclature of goods</h1>
+  </div>
+  <div class="card-body">
+    
+<div class= "flex-container">
 
-<%= link_to "Add", new_good_path, class: "btn btn-primary" %>
+<div>
+<%= link_to "Add new item", new_good_path, class: "btn btn-primary app-btn" %>
+<%= link_to "Back", root_path,  class: "btn btn-warning app-btn" %>
 </div>
-<div class= "col-sm-1">    
 
-<%= link_to "Back", root_path,  class: "btn btn-warning" %>
 </div>
-</div>
-</div>
+<div class="table-responsive-sm">
 <table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Name</th>
       <th scope="col">Properties</th>
+      <th/>
+      <th/>
      </tr>
   </thead>
   <tbody>
- <% @all_goods.each do |gd|%>
-     <tr></tr>
-      <th scope="row">1</th>
-      <td><%= gd.id %></td>
+ <% @all_goods.each_with_index do |gd, ind|%>
+     <tr>
+      <th><%= ind+1 %>
       <td><%= gd.name.to_s %></td>
       <td><%= gd.properties %></td>
+      <td>
+        <%= link_to 'Edit', edit_good_path(gd) %>
+        |
+        <%= link_to 'Delete', good_path(gd), class: 'remove_record', method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
     </tr>
     <%end%>
   </tbody>
 </table>
+</div>
+</div>
+</div>

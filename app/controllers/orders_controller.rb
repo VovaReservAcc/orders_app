@@ -18,6 +18,8 @@ class OrdersController < ApplicationController
     
     def new
         @order = Order.new
+       @goods_collection_for_select = Good.all.each_with_object([]){|g,o| o << [g.name, g.id]}
+       @customer_collection_for_select =  Customer.all.each_with_object([]){|g,o| o << [g.name, g.id]}
        # @order_lines = o
     end    
     
