@@ -28,9 +28,9 @@ $(document).on('turbolinks:load', function() {
     var regexp, time;
     time = new Date().getTime();
     regexp = new RegExp($(this).data('id'), 'g');
-    console.log(regexp);
+   
     $('.fields').append($(this).data('fields').replace(regexp, time));
-    console.log($('.fields'));
+   
     return event.preventDefault();
   });
   

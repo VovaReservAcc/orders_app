@@ -1,4 +1,4 @@
-<H1> This is orders index</H2>
+<H1> This is your orders</H2>
 
  <table class="table">
  <thead class="thead-dark">
@@ -19,18 +19,17 @@
     <%= link_to "open", order_path(ord), class: "btn btn-success" %>
     <%= link_to "edit", edit_order_path(ord),  class: "btn btn-danger" %>
   </td>
-
-  <%end%>
   </tr>
+  <%end%>
+  
   </tbody>
   </table>  
-<div class = "container">
- <div class = "row">  
-   <div class = "col-sm-6">    
-      <%= link_to "Add new order", new_order_path,  class: "btn btn-lg btn-primary" %>
-   </div>
-  <div class = "col-sm-6">    
-     <%= link_to "Back to the root path", root_path,  class: "btn btn-lg btn-primary" %>   
-  </div>
- </div>
+  
+<div class= "flex-container">
+
+<div>
+  <%= link_to "Add new order", new_order_path,  class: "btn btn-primary" %>
+  <%= link_to "Back to the root path", root_path,  class: "btn btn-warning app-btn" %>   
+</div>
+
 </div>

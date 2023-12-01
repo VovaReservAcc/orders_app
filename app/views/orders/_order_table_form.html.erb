@@ -1,4 +1,4 @@
-<% @order.order_rows.each do |line| %>
+<% current_order.order_rows.each do |line| %>
 <p>  <%= line.good.name %> </p>
 <p>  <%= line.count %> </p>
 <p>  <%= line.price %> </p>

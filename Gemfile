@@ -60,3 +60,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 
 gem 'bootstrap-sass'
+
+gem 'bootstrap-select-rails'
+
+gem 'devise'

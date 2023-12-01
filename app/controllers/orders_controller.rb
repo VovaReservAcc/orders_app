@@ -1,34 +1,36 @@
 class OrdersController < ApplicationController
     ActionView::Base.include(ApplicationHelper)
+    
+    before_action :load_data
+    
     def index
        @all_orders = Order.all
     end   
+    
     def show
-      @order = Order.find(params[:id])
     end
     
     def edit
-      @order = Order.find(params[:id])
-      @goods_collection_for_select = Good.all.each_with_object([]){|g,o| o << [g.name, g.id]}
-      @customer_collection_for_select =  Customer.all.each_with_object([]){|g,o| o << [g.name, g.id]}
     end   
     
     def update
+      if current_order.update order_params
+        redirect_to orders_path
+      else
+        render :edit
+      end
     end    
     
     def new
-        @order = Order.new
-       @goods_collection_for_select = Good.all.each_with_object([]){|g,o| o << [g.name, g.id]}
-       @customer_collection_for_select =  Customer.all.each_with_object([]){|g,o| o << [g.name, g.id]}
-       # @order_lines = o
+      @current_order = Order.new
     end    
     
     
     def create
-     @order = Order.new(good_params)
+     @current_order = Order.new(order_params)
      respond_to do |format|
-      if @order.save
-        format.html { redirect_to goods_path, notice: 'Order was successfully created.' }
+      if @current_order.save
+        format.html { redirect_to orders_path, notice: 'Order was successfully created.' }
       else
         format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }
@@ -36,7 +38,22 @@ class OrdersController < ApplicationController
     end
     end   
     
-    def good_params
-      params.require(:order).permit(:customer_id, :number, :date, )
+    
+     
+    protected
+    
+    helper_method def current_order
+      @current_order ||= Order.find(params[:id])
+    end
+    
+    private
+    
+    def load_data
+      @goods_collection_for_select = Good.all.each_with_object([]){|g,o| o << [g.name, g.id]}
+      @customer_collection_for_select =  Customer.all
+    end  
+    
+    def order_params
+      params.require(:order).permit(:customer_id, :number, :date, order_rows_attributes: [:id, :good_id, :count, :price, :_destroy])
     end
 end
